@@ -161,16 +161,21 @@ $categorias = mysqli_query($conexion, $query_cat);
             <p class="card-text text-muted small flex-grow-1"><?= substr($prod['descripcion'],0,60) ?>...</p>
             <p class="text-muted small mb-2"><i class="bi bi-box"></i> Stock: <?= $prod['stock'] ?></p>
             <div class="d-grid gap-1">
-              <?php if(isset($_SESSION['id_usuario'])): ?>
-                <a href="cliente/agregar_carrito.php?id=<?= $prod['id_producto'] ?>" 
-                   class="btn btn-warning btn-sm fw-bold">
-                  <i class="bi bi-cart-plus"></i> Agregar
-                </a>
-              <?php else: ?>
-                <a href="login.php" class="btn btn-outline-warning btn-sm">
-                  <i class="bi bi-box-arrow-in-right"></i> Ingresar para comprar
-                </a>
-              <?php endif; ?>
+            <?php if(isset($_SESSION['id_usuario'])): ?>
+             <a href="cliente/agregar_carrito.php?id=<?= $prod['id_producto'] ?>" 
+       class="btn btn-warning btn-sm fw-bold">
+      <i class="bi bi-cart-plus"></i> Agregar
+    </a>
+    <a href="cliente/agregar_favorito.php?id=<?= $prod['id_producto'] ?>"
+       class="btn btn-outline-danger btn-sm">
+      <i class="bi bi-heart"></i> Favorito
+    </a>
+  <?php else: ?>
+    <a href="login.php" class="btn btn-outline-warning btn-sm">
+      <i class="bi bi-box-arrow-in-right"></i> Ingresar para comprar
+    </a>
+  <?php endif; ?>
+</div>
             </div>
           </div>
         </div>
